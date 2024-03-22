@@ -1,13 +1,13 @@
 #include<stdio.h>
-float withdraw,deposite,amt=0;
+float withdraw,deposit,amt=0;
 void CheckBalance(){
     printf("\nCURRENR BALANCE IS : %.2fRs\n\n",amt);
 }
-void Deposite(){
+void Deposit(){
     printf("\nEnter Depositing balance : \n\n");
-    scanf("%f",&deposite);
-    amt+=deposite;
-    printf("\n%.2fRs DEPOSITED\n\n",deposite);
+    scanf("%f",&deposit);
+    amt+=deposit;
+    printf("\n%.2fRs DEPOSITED\n\n",deposit);
 }
 void Withdraw(){
     printf("\nEnter withdrawing Amount : \n\n");
@@ -25,14 +25,14 @@ void Withdraw(){
 int main(){
  int ch;
  do {
-    printf(" 1 : CHECK BALANCE \n 2 : DEPOSITE \n 3 : WITHDRAW \n 0 : CANCEL TRANSATION \n");
+    printf(" 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSATION \n");
     printf("\nenter Choice : ");
     scanf("%d",&ch);
         switch(ch){
             case 1: CheckBalance();
                 break;
 
-            case 2: Deposite();
+            case 2: Deposit();
                 break;
 
             case 3: Withdraw();
