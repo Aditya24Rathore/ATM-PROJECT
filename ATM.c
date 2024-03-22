@@ -38,7 +38,10 @@ int main(){
             case 3: Withdraw();
                 break;
 
-            case 0: printf("\nCANCELING TRANSACTION...\n\n0");
+            case 0: printf("\nCANCELING TRANSACTION...\n\n");
+                break;
+
+            default : printf("\n\n**invalid choice**\n\n");    
         }
     } while (ch!=0);
   return 0;
