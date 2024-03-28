@@ -3,14 +3,14 @@
 float withdraw,deposit,amt=0;
 int genpin,checkPin;
 
-int PIN(){
-    printf("\n\nenter the PIN : \n\n");
+int EnterPIN(){
+    printf("\n\nENTER PIN : \n\n");
     scanf("%d",&checkPin);
     return checkPin;
 }
 
-int GPIN(){
-    printf("\n\ngenerate ATM Pin number : \n\n");
+int GenratePIN(){
+    printf("\n\nGENERATE ATM PIN NUMBER : \n\n");
     scanf("%d",&genpin);
     return genpin;
 }
@@ -37,24 +37,30 @@ void Withdraw(){
 }
 
 int main(){
-    GPIN();
+    GenratePIN();
     system("cls");
-    PIN();
-    
-    while(genpin!=checkPin){
-        PIN();
+    int condown=0;
+    do {
+        condown++;
+        EnterPIN();
 
         if(genpin==checkPin){
             break;
         }
         else{
-            printf("\n\ninvlid PIN\n\n");
+            system("cls");
+            printf("\n\nINVALID PIN\n\n");
+        }
+        if(condown==3){
+            printf("ALL THREE ATTEMPTS ARE USED TRY AGAIN LATER....\n\n");
+            return 0;
         }   
-    }     
+    } while (genpin!=checkPin);
  int ch;
  do {
     printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSATION \n");
     printf("\nenter Choice : ");
+    
     scanf("%d",&ch);
         switch(ch){
             case 1: CheckBalance();
