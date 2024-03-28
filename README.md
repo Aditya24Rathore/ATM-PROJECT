@@ -1,12 +1,11 @@
-# Simple Banking System
-
-This is a simple command-line banking system implemented in C. It allows users to check their balance, deposit money, and withdraw money.
+## ATM System
+This is a simple ATM (Automated Teller Machine) system implemented in C. It allows users to check balance, deposit money, and withdraw money after entering their PIN.
 
 ## Features
-
-- **Check Balance**: Users can check their current account balance.
+- **PIN Verification**: Users are required to enter their PIN to access their account.
+- **Check Balance**: Users can check their account balance.
 - **Deposit**: Users can deposit money into their account.
-- **Withdraw**: Users can withdraw money from their account, provided they have sufficient balance.
+- **Withdraw**: Users can withdraw money from their account (if sufficient balance is available).
 
 ## Getting Started
 
@@ -16,26 +15,24 @@ This is a simple command-line banking system implemented in C. It allows users t
 
 ### Running the Program
 
-1. Clone the repository:
+1. Clone the Repository: Clone this repository to your local machine using git clone.
 
 
-2. Compile the program:
+2. Compile the Program: Navigate to the project directory and compile the program using a C compiler (e.g., GCC).
 
 
-3. Run the executable:
+Run the Program: Execute the compiled program.
 
 
-4. Follow the on-screen instructions to perform transactions.
+Follow On-Screen Instructions: Follow the on-screen instructions to use the ATM system. You'll be prompted to enter your PIN, choose a transaction type, and perform actions accordingly.
 
-## Usage
-
-- Upon running the program, you will be presented with a menu with options to check balance, deposit, withdraw, or cancel the transaction.
-- Choose the desired option by entering the corresponding number and follow the prompts to complete the transaction.
-- You can continue performing transactions until you choose to cancel the transaction.
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
+Usage
+Upon running the program, you'll be prompted to generate an ATM PIN number. Note this PIN number.
+Enter this PIN number to access the ATM system.
+Choose from the available options to check balance, deposit, withdraw, or cancel the transaction.
+Follow the on-screen instructions to complete your transactions.
+Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
 
 ## License
 
