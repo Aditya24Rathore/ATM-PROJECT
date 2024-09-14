@@ -39,9 +39,9 @@ void Withdraw(){
 int main(){
     GenratePIN();
     system("cls");
-    int condown=0;
+    int countdown=0;
     do {
-        condown++;
+        countdown++;
         EnterPIN();
 
         if(genpin==checkPin){
@@ -51,7 +51,7 @@ int main(){
             system("cls");
             printf("\n\nINVALID PIN\n\n");
         }
-        if(condown==3){
+        if(countdown==3){
             printf("ALL THREE ATTEMPTS ARE USED TRY AGAIN LATER....\n\n");
             return 0;
         }   
