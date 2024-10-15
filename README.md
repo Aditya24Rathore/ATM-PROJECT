@@ -1,5 +1,5 @@
 ## ATM System
-This is a simple ATM (Automated Tailer Machine) system implemented in C. It allows users to check balance, deposit money, and withdraw money after entering their PIN.
+This is a simple ATM (Automated Teller Machine) system implemented in C. It allows users to check balance, deposit money, and withdraw money after entering their PIN.
 
 ## Features
 - **PIN Verification**: Users are required to enter their PIN to access their account.
