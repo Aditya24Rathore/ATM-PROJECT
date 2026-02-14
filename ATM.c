@@ -8,7 +8,7 @@ int PIN(int checkPin){
     return checkPin;
 }
 
-int GPIN(int genPin){
+int Gen_Pin(int genPin){
     printf("\n\nGenerate ATM Pin number : \n\n");
     scanf("%d",&genPin);
     return genPin;
@@ -39,7 +39,7 @@ int main(){
 
     int genPin,checkPin;
 
-    GPIN(genPin);
+    Gen_Pin(genPin);
     system("cls");
     PIN(checkPin);
     
@@ -52,13 +52,19 @@ int main(){
         else{
             printf("\n\nInvalid PIN\n\n");
         }   
-    }     
- int ch;
+    }
+
+ int Option;
+ 
  do {
+
+    printf("\n**********MENU**********");
     printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
+
     printf("\nenter Choice : ");
-    scanf("%d",&ch);
-        switch(ch){
+    scanf("%d",&Option);
+
+        switch(Option){
             case 1: CheckBalance();
                 break;
 
@@ -71,9 +77,9 @@ int main(){
             case 0: printf("\nCANCELING TRANSACTION...\n\n");
                 break;
 
-            default : printf("\n\n**invalid choice**\n\n");    
+            default : printf("\n\n**Invalid Choice**\n\n");    
         }
-    } while (ch!=0);
+    } while (Option!=0);
         
   return 0;
 }
