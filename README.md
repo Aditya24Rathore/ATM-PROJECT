@@ -7,6 +7,18 @@ ATM (Automated Teller Machine) system implemented in C. It allows users to check
 - **Deposit**: Users can deposit money into their account.
 - **Withdraw**: Users can withdraw money from their account (if sufficient balance is available).
 
+## Images
+
+![GeneratePin Image](images/GeneratePin.png)
+
+![EnterPin Image](images/EnterPin.png)
+
+![Deposit Image](images/Deposit.png)
+
+![CheckBalance Image](images/CheckBalance.png)
+
+![Withdraw Image](images/Withdraw.png)
+
 ## Getting Started
 
 ### Prerequisites
