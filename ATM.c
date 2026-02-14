@@ -39,19 +39,13 @@ int main(){
 
     int genPin,checkPin;
 
-    Gen_Pin(genPin);
+    genPin = Gen_Pin(genPin);
     system("cls");
-    PIN(checkPin);
+    checkPin = PIN(checkPin);
     
     while(genPin!=checkPin){
-        PIN(checkPin);
-
-        if(genPin==checkPin){
-            break;
-        }
-        else{
-            printf("\n\nInvalid PIN\n\n");
-        }   
+        printf("\n\nInvalid PIN\n\n");
+        checkPin = PIN(checkPin);
     }
 
  int Option;
