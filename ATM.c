@@ -1,35 +1,34 @@
 #include<stdio.h>
 #include<stdlib.h>
-float withdraw,deposit,amt=0;
-int genpin,checkPin;
+double withdraw,deposit,amt=0;
 
-int PIN(){
-    printf("\n\nenter the PIN : \n\n");
+int PIN(int checkPin){
+    printf("\n\nEnter the PIN : \n\n");
     scanf("%d",&checkPin);
     return checkPin;
 }
 
-int GPIN(){
-    printf("\n\ngenerate ATM Pin number : \n\n");
-    scanf("%d",&genpin);
-    return genpin;
+int GPIN(int genPin){
+    printf("\n\nGenerate ATM Pin number : \n\n");
+    scanf("%d",&genPin);
+    return genPin;
 }
 void CheckBalance(){
-    printf("\nCURRENR BALANCE IS : %.2fRs\n\n",amt);
+    printf("\nCURRENT BALANCE IS : %.2fRs\n\n",amt);
 }
 void Deposit(){
     printf("\nEnter Depositing balance : \n\n");
-    scanf("%f",&deposit);
+    scanf("%lf",&deposit);
     amt+=deposit;
     printf("\n%.2fRs DEPOSITED\n\n",deposit);
 }
 void Withdraw(){
     printf("\nEnter withdrawing Amount : \n\n");
-    scanf("%f",&withdraw);
+    scanf("%lf",&withdraw);
     if(withdraw<=amt&&withdraw!=0){
     amt-=withdraw;
 
-    printf("\nAfter Withhdraw Balance is : %.2fRs\n\n",amt);
+    printf("\nAfter Withdraw Balance is : %.2fRs\n\n",amt);
     }
     else{
         printf("\nLOW BALANCE... *OR* INVALID INPUT... \n\n");
@@ -37,23 +36,26 @@ void Withdraw(){
 }
 
 int main(){
-    GPIN();
-    system("cls");
-    PIN();
-    
-    while(genpin!=checkPin){
-        PIN();
 
-        if(genpin==checkPin){
+    int genPin,checkPin;
+
+    GPIN(genPin);
+    system("cls");
+    PIN(checkPin);
+    
+    while(genPin!=checkPin){
+        PIN(checkPin);
+
+        if(genPin==checkPin){
             break;
         }
         else{
-            printf("\n\ninvlid PIN\n\n");
+            printf("\n\nInvalid PIN\n\n");
         }   
     }     
  int ch;
  do {
-    printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSATION \n");
+    printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
     printf("\nenter Choice : ");
     scanf("%d",&ch);
         switch(ch){
