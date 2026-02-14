@@ -16,19 +16,19 @@ ATM (Automated Teller Machine) system implemented in C. It allows users to check
 <p align="center">
   <img src="images/GeneratePin.png" width="450">
 </p>
----
+
 <p align="center">
   <img src="images/EnterPin.png" width="450">
 </p>
----
+
 <p align="center">
   <img src="images/Deposit.png" width="450">
 </p>
----
+
 <p align="center">
   <img src="images/CheckBalance.png" width="450">
 </p>
----
+
 <p align="center">
   <img src="images/Withdraw.png" width="450">
 </p>
