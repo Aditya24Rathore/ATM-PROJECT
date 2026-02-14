@@ -1,46 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
+double withdraw,deposit,amt=0;
 
-// Global variables to store transaction details and ATM PINs
-float withdraw,deposit,amt=0;
-int genpin,checkPin;
-
-// Function to prompt user to enter their PIN
-int EnterPIN(){
-    printf("\n\nENTER PIN : \n\n");
+int PIN(int checkPin){
+    printf("\n\nEnter the PIN : \n\n");
     scanf("%d",&checkPin);
     return checkPin;
 }
 
-// Function to prompt user to generate a new ATM PIN
-int GenratePIN(){
-    printf("\n\nGENERATE ATM PIN NUMBER : \n\n");
-    scanf("%d",&genpin);
-    return genpin;
+int Gen_Pin(int genPin){
+    printf("\n\nGenerate ATM Pin number : \n\n");
+    scanf("%d",&genPin);
+    return genPin;
 }
 
-// Function to display the current balance
 void CheckBalance(){
-    printf("\nCURRENR BALANCE IS : %.2fRs\n\n",amt);
+    printf("\nCURRENT BALANCE IS : %.2fRs\n\n",amt);
 }
 
-// Function to deposit money into the account
 void Deposit(){
     printf("\nEnter Depositing balance : \n\n");
-    scanf("%f",&deposit);
+    scanf("%lf",&deposit);
     amt+=deposit;
     printf("\n%.2fRs DEPOSITED\n\n",deposit);
 }
 
-// Function to withdraw money from the account
 void Withdraw(){
     printf("\nEnter withdrawing Amount : \n\n");
-    scanf("%f",&withdraw);
-    // Check if the withdrawal amount is valid
+    scanf("%lf",&withdraw);
     if(withdraw<=amt&&withdraw!=0){
     amt-=withdraw;
 
-    printf("\nAfter Withhdraw Balance is : %.2fRs\n\n",amt);
+    printf("\nAfter Withdraw Balance is : %.2fRs\n\n",amt);
     }
     else{
         printf("\nLOW BALANCE... *OR* INVALID INPUT... \n\n");
@@ -48,41 +39,29 @@ void Withdraw(){
 }
 
 int main(){
-    GenratePIN();
 
-    // Clear the screen after generating the PIN
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
+    int genPin,checkPin;
 
-    int countdown=0;
-    do {
-        countdown++;
-        EnterPIN();
-    // Verify the entered PIN
-        if(genpin==checkPin){
-            break;
-        }
-        else{
-            system("cls");
-            printf("\n\nINVALID PIN\n\n");
-        }
-        // If 3 invalid attempts are made, terminate the program
-        if(countdown==3){
-            printf("ALL THREE ATTEMPTS ARE USED TRY AGAIN LATER....\n\n");
-            return 0;
-        }   
-    } while (genpin!=checkPin);
- int ch;
- do {
-    // Main ATM operations menu
-    printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSATION \n");
-    printf("\nenter Choice : ");
+    genPin = Gen_Pin(genPin);
+    system("cls");
+    checkPin = PIN(checkPin);
     
-    scanf("%d",&ch);
-        switch(ch){
+    while(genPin!=checkPin){
+        printf("\n\nInvalid PIN\n\n");
+        checkPin = PIN(checkPin);
+    }
+
+ int Option;
+ 
+ do {
+
+    printf("\n**********MENU**********");
+    printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
+
+    printf("\nenter Choice : ");
+    scanf("%d",&Option);
+
+        switch(Option){
             case 1: CheckBalance();
                 break;
 
@@ -95,9 +74,9 @@ int main(){
             case 0: printf("\nCANCELING TRANSACTION...\n\n");
                 break;
 
-            default : printf("\n\n**invalid choice**\n\n");    
+            default : printf("\n\n**Invalid Choice**\n\n");    
         }
-    } while (ch!=0);
+    } while (Option!=0);
         
   return 0;
 }
