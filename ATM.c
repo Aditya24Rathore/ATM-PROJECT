@@ -2,17 +2,21 @@
 #include<stdlib.h>
 double withdraw,deposit,amt = 0;
 
-int PIN(int checkPin) {
+int PIN(void) {
+    int checkPin;
 
     printf("\n\nEnter the PIN : \n\n");
     scanf("%d",&checkPin);
+
     return checkPin;
 }
 
-int Gen_Pin(int genPin) {
+int Gen_Pin(void) {
+    int genPin;
 
     printf("\n\nGenerate ATM Pin number : \n\n");
     scanf("%d", &genPin);
+
     return genPin;
 }
 
@@ -51,13 +55,13 @@ int main(){
 
     int genPin,checkPin;
 
-    genPin = Gen_Pin(genPin);
+    genPin = Gen_Pin();
     system("cls");
-    checkPin = PIN(checkPin);
+    checkPin = PIN();
     
     while(genPin!=checkPin){
         printf("\n\nInvalid PIN\n\n");
-        checkPin = PIN(checkPin);
+        checkPin = PIN();
     }
 
  int Option;
