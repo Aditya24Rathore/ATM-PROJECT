@@ -61,12 +61,19 @@ int main(){
     system("cls");
     checkPin = PIN();
     
-    while(genPin!=checkPin){
+    int attempts = 0;
+    while(genPin != checkPin) {
+        attempts++;
         printf("\n\nInvalid PIN\n\n");
+
+        if(attempts == 3) {
+            printf("\nCard Blocked!\n");
+            return 0;
+        }
         checkPin = PIN();
     }
 
- int Option;
+    int Option;
  
     do {
 
@@ -93,5 +100,5 @@ int main(){
             }
     }while (Option != 0);
         
-  return 0;
+return 0;
 }
