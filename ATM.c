@@ -1,39 +1,48 @@
 #include<stdio.h>
 #include<stdlib.h>
-double withdraw,deposit,amt=0;
+double withdraw,deposit,amt = 0;
 
-int PIN(int checkPin){
+int PIN(int checkPin) {
+
     printf("\n\nEnter the PIN : \n\n");
     scanf("%d",&checkPin);
     return checkPin;
 }
 
-int Gen_Pin(int genPin){
+int Gen_Pin(int genPin) {
+
     printf("\n\nGenerate ATM Pin number : \n\n");
-    scanf("%d",&genPin);
+    scanf("%d", &genPin);
     return genPin;
 }
 
-void CheckBalance(){
-    printf("\nCURRENT BALANCE IS : %.2fRs\n\n",amt);
+void CheckBalance() {
+
+    printf("\nCURRENT BALANCE IS : %.2fRs\n\n", amt);
 }
 
 void Deposit(){
+
     printf("\nEnter Depositing balance : \n\n");
-    scanf("%lf",&deposit);
-    amt+=deposit;
-    printf("\n%.2fRs DEPOSITED\n\n",deposit);
+    scanf("%lf", &deposit);
+    if(deposit > 0) {
+        amt += deposit;
+        printf("\n%.2fRs DEPOSITED\n\n", deposit);
+    }
+    else
+        printf("\nWrong Amount");
 }
 
-void Withdraw(){
-    printf("\nEnter withdrawing Amount : \n\n");
-    scanf("%lf",&withdraw);
-    if(withdraw<=amt&&withdraw!=0){
-    amt-=withdraw;
+void Withdraw() {
 
-    printf("\nAfter Withdraw Balance is : %.2fRs\n\n",amt);
+    printf("\nEnter withdrawing Amount : \n\n");
+    scanf("%lf", &withdraw);
+    if(withdraw <= amt && withdraw > 0) {
+        amt -= withdraw;
+
+    printf("\nAfter Withdraw Balance is : %.2fRs\n\n", amt);
     }
-    else{
+    else {
         printf("\nLOW BALANCE... *OR* INVALID INPUT... \n\n");
     }
 }
