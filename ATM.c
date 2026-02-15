@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-double withdraw,deposit,amt = 0;
+double amt = 0;
 
 int PIN(void) {
     int checkPin;
@@ -27,6 +27,7 @@ void CheckBalance() {
 
 void Deposit(){
 
+    double deposit;
     printf("\nEnter Depositing balance : \n\n");
     scanf("%lf", &deposit);
     if(deposit > 0) {
@@ -39,6 +40,7 @@ void Deposit(){
 
 void Withdraw() {
 
+    double withdraw;
     printf("\nEnter withdrawing Amount : \n\n");
     scanf("%lf", &withdraw);
     if(withdraw <= amt && withdraw > 0) {
