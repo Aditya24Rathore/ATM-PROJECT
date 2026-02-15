@@ -18,7 +18,7 @@ int Gen_Pin(int genPin) {
 
 void CheckBalance() {
 
-    printf("\nCURRENT BALANCE IS : %.2fRs\n\n", amt);
+    printf("\nCURRENT BALANCE IS : %.2f Rs\n\n", amt);
 }
 
 void Deposit(){
@@ -27,7 +27,7 @@ void Deposit(){
     scanf("%lf", &deposit);
     if(deposit > 0) {
         amt += deposit;
-        printf("\n%.2fRs DEPOSITED\n\n", deposit);
+        printf("\n%.2f Rs DEPOSITED\n\n", deposit);
     }
     else
         printf("\nWrong Amount");
@@ -40,7 +40,7 @@ void Withdraw() {
     if(withdraw <= amt && withdraw > 0) {
         amt -= withdraw;
 
-    printf("\nAfter Withdraw Balance is : %.2fRs\n\n", amt);
+    printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", amt);
     }
     else {
         printf("\nLOW BALANCE... *OR* INVALID INPUT... \n\n");
@@ -62,30 +62,30 @@ int main(){
 
  int Option;
  
- do {
+    do {
 
-    printf("\n**********MENU**********");
-    printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
+        printf("\n**********MENU**********");
+        printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
 
-    printf("\nenter Choice : ");
-    scanf("%d",&Option);
+        printf("\nenter Choice : ");
+        scanf("%d", &Option);
 
-        switch(Option){
-            case 1: CheckBalance();
-                break;
+            switch(Option) {
+                case 1: CheckBalance();
+                    break;
 
-            case 2: Deposit();
-                break;
+                case 2: Deposit();
+                    break;
 
-            case 3: Withdraw();
-                break;
+                case 3: Withdraw();
+                    break;
 
-            case 0: printf("\nCANCELING TRANSACTION...\n\n");
-                break;
+                case 0: printf("\nCANCELING TRANSACTION...\n\n");
+                    break;
 
-            default : printf("\n\n**Invalid Choice**\n\n");    
-        }
-    } while (Option!=0);
+                default : printf("\n\n**Invalid Choice**\n\n");    
+            }
+    }while (Option != 0);
         
   return 0;
 }
