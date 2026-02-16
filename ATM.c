@@ -30,6 +30,7 @@ void Deposit(){
     double deposit;
     printf("\nEnter Depositing balance : \n\n");
     scanf("%lf", &deposit);
+
     if(deposit > 0) {
         amt += deposit;
         printf("\n%.2f Rs DEPOSITED\n\n", deposit);
@@ -43,10 +44,10 @@ void Withdraw() {
     double withdraw;
     printf("\nEnter withdrawing Amount : \n\n");
     scanf("%lf", &withdraw);
+
     if(withdraw <= amt && withdraw > 0) {
         amt -= withdraw;
-
-    printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", amt);
+        printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", amt);
     }
     else {
         printf("\nLOW BALANCE... *OR* INVALID INPUT... \n\n");
