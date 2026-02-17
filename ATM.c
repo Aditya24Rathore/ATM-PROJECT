@@ -45,13 +45,15 @@ void Withdraw() {
     printf("\nEnter withdrawing Amount : \n\n");
     scanf("%lf", &withdraw);
 
-    if(withdraw <= amt && withdraw > 0) {
+    if(withdraw <= amt) {
         amt -= withdraw;
         printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", amt);
     }
-    else {
-        printf("\nLOW BALANCE... *OR* INVALID INPUT... \n\n");
+    else if(withdraw > amt) {
+        printf("\nLow Balance... \n\n");
     }
+    else
+        printf("\n\nInvalid Input\n\n");
 }
 
 int main(){
@@ -80,6 +82,7 @@ int main(){
 
         printf("\n**********MENU**********");
         printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
+        printf("\n************************\n");
 
         printf("\nenter Choice : ");
         scanf("%d", &Option);
