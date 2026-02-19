@@ -33,7 +33,7 @@ The diagram below illustrates the high-level architecture and control flow of th
 It shows how the program is structured into logical components, including program control, authentication, menu dispatching, transaction processing, system I/O, and in-memory state management.
 
 <p align="center">
-  <img src="images/ATM_System_Design.png" width="900" alt="ATM System Architecture Diagram">
+  <img src="images/ATM_System_Design.png.png" width="900" alt="ATM System Architecture Diagram">
 </p>
 
 ### Design Overview
