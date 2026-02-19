@@ -2,7 +2,7 @@
 #include<stdlib.h>
 double balance = 0;
 
-int PIN(void) {
+int read_pin(void) {
     int enteredPin;
 
     printf("\n\nEnter the PIN : \n\n");
@@ -11,7 +11,7 @@ int PIN(void) {
     return enteredPin;
 }
 
-int Gen_Pin(void) {
+int generate_pin(void) {
     int generatedPin;
 
     printf("\n\nGenerate ATM Pin number : \n\n");
@@ -20,12 +20,12 @@ int Gen_Pin(void) {
     return generatedPin;
 }
 
-void CheckBalance() {
+void check_balance() {
 
     printf("\nCURRENT BALANCE IS : %.2f Rs\n\n", balance);
 }
 
-void Deposit(){
+void deposit_money(){
 
     double depositAmount;
     printf("\nEnter Depositing balance : \n\n");
@@ -35,29 +35,31 @@ void Deposit(){
         balance += depositAmount;
         printf("\n%.2f Rs DEPOSITED\n\n", depositAmount);
     }
-    else
-        printf("\nWrong Amount");
+    else if(depositAmount <= 0) {
+        printf("\n\nInvalid Input\n\n");
+    }
 }
 
-void Withdraw() {
+void withdraw_money() {
 
     double withdrawAmount;
     printf("\nEnter withdrawing Amount : \n\n");
     scanf("%lf", &withdrawAmount);
 
-    if(withdrawAmount <= balance) {
-        balance -= withdrawAmount;
-        printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", balance);
+    if(withdrawAmount <= 0){
+        printf("\n\nInvalid Input\n\n");
     }
     else if(withdrawAmount > balance) {
         printf("\nLow Balance... \n\n");
     }
-    else
-        printf("\n\nInvalid Input\n\n");
+    else if(withdrawAmount <= balance) {
+        balance -= withdrawAmount;
+        printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", balance);
+    }
 }
 
 //! Need to implement the pin validation function
-// int pin_check() {
+// int validate_pin() {
 //     // TODO: Implement PIN validation logic
 //     return 0;
 // }
@@ -66,9 +68,9 @@ int main(){
 
     int generatedPin,enteredPin;
 
-    generatedPin = Gen_Pin();
+    generatedPin = generate_pin();
     system("cls");
-    enteredPin = PIN();
+    enteredPin = read_pin();
     
     int pinAttempts = 0;
     while(generatedPin != enteredPin) {
@@ -79,7 +81,7 @@ int main(){
             printf("\nCard Blocked!\n");
             return 0;
         }
-        enteredPin = PIN();
+        enteredPin = read_pin();
     }
 
     int choice;
@@ -94,13 +96,13 @@ int main(){
         scanf("%d", &choice);
 
             switch(choice) {
-                case 1: CheckBalance();
+                case 1: check_balance();
                     break;
 
-                case 2: Deposit();
+                case 2: deposit_money();
                     break;
 
-                case 3: Withdraw();
+                case 3: withdraw_money();
                     break;
 
                 case 0: printf("\nCANCELING TRANSACTION...\n\n");
