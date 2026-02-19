@@ -1,79 +1,116 @@
 #include<stdio.h>
 #include<stdlib.h>
-double withdraw,deposit,amt=0;
+double balance = 0;
 
-int PIN(int checkPin){
+int read_pin(void) {
+    int enteredPin;
+
     printf("\n\nEnter the PIN : \n\n");
-    scanf("%d",&checkPin);
-    return checkPin;
+    scanf("%d",&enteredPin);
+
+    return enteredPin;
 }
 
-int Gen_Pin(int genPin){
+int generate_pin(void) {
+    int generatedPin;
+
     printf("\n\nGenerate ATM Pin number : \n\n");
-    scanf("%d",&genPin);
-    return genPin;
-}
-void CheckBalance(){
-    printf("\nCURRENT BALANCE IS : %.2fRs\n\n",amt);
-}
-void Deposit(){
-    printf("\nEnter Depositing balance : \n\n");
-    scanf("%lf",&deposit);
-    amt+=deposit;
-    printf("\n%.2fRs DEPOSITED\n\n",deposit);
-}
-void Withdraw(){
-    printf("\nEnter withdrawing Amount : \n\n");
-    scanf("%lf",&withdraw);
-    if(withdraw<=amt&&withdraw!=0){
-    amt-=withdraw;
+    scanf("%d", &generatedPin);
 
-    printf("\nAfter Withdraw Balance is : %.2fRs\n\n",amt);
+    return generatedPin;
+}
+
+void check_balance() {
+
+    printf("\nCURRENT BALANCE IS : %.2f Rs\n\n", balance);
+}
+
+void deposit_money(){
+
+    double depositAmount;
+    printf("\nEnter Depositing balance : \n\n");
+    scanf("%lf", &depositAmount);
+
+    if(depositAmount > 0) {
+        balance += depositAmount;
+        printf("\n%.2f Rs DEPOSITED\n\n", depositAmount);
     }
-    else{
-        printf("\nLOW BALANCE... *OR* INVALID INPUT... \n\n");
+    else if(depositAmount <= 0) {
+        printf("\n\nInvalid Input\n\n");
     }
 }
+
+void withdraw_money() {
+
+    double withdrawAmount;
+    printf("\nEnter withdrawing Amount : \n\n");
+    scanf("%lf", &withdrawAmount);
+
+    if(withdrawAmount <= 0){
+        printf("\n\nInvalid Input\n\n");
+    }
+    else if(withdrawAmount > balance) {
+        printf("\nLow Balance... \n\n");
+    }
+    else if(withdrawAmount <= balance) {
+        balance -= withdrawAmount;
+        printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", balance);
+    }
+}
+
+//! Need to implement the pin validation function
+// int validate_pin() {
+//     // TODO: Implement PIN validation logic
+//     return 0;
+// }
 
 int main(){
 
-    int genPin,checkPin;
+    int generatedPin,enteredPin;
 
-    genPin = Gen_Pin(genPin);
+    generatedPin = generate_pin();
     system("cls");
-    checkPin = PIN(checkPin);
+    enteredPin = read_pin();
     
-    while(genPin!=checkPin){
+    int pinAttempts = 0;
+    while(generatedPin != enteredPin) {
+        pinAttempts++;
         printf("\n\nInvalid PIN\n\n");
-        checkPin = PIN(checkPin);
+
+        if(pinAttempts == 3) {
+            printf("\nCard Blocked!\n");
+            return 0;
+        }
+        enteredPin = read_pin();
     }
 
- int Option;
+    int choice;
  
- do {
+    do {
 
-    printf("\n**********MENU**********");
-    printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
+        printf("\n**********MENU**********");
+        printf("\n\n 1 : CHECK BALANCE \n 2 : DEPOSIT \n 3 : WITHDRAW \n 0 : CANCEL TRANSACTION \n");
+        printf("\n************************\n");
 
-    printf("\nenter Choice : ");
-    scanf("%d",&Option);
+        printf("\nenter Choice : ");
+        scanf("%d", &choice);
 
-        switch(Option){
-            case 1: CheckBalance();
-                break;
+            switch(choice) {
+                case 1: check_balance();
+                    break;
 
-            case 2: Deposit();
-                break;
+                case 2: deposit_money();
+                    break;
 
-            case 3: Withdraw();
-                break;
+                case 3: withdraw_money();
+                    break;
 
-            case 0: printf("\nCANCELING TRANSACTION...\n\n");
-                break;
+                case 0: printf("\nCANCELING TRANSACTION...\n\n");
+                    break;
 
-            default : printf("\n\n**Invalid Choice**\n\n");    
-        }
-    } while (Option!=0);
+                default : printf("\n\n**Invalid Choice**\n\n");    
+            }
+    }while (choice != 0);
         
-  return 0;
+return 0;
 }
