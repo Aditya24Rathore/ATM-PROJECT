@@ -26,6 +26,30 @@ A simple and interactive Automated Teller Machine (ATM) system implemented in C.
 
 ---
 
+## 🏗️ System Design & Architecture
+
+The diagram below illustrates the high-level architecture and control flow of the ATM console application.
+
+It shows how the program is structured into logical components, including program control, authentication, menu dispatching, transaction processing, system I/O, and in-memory state management.
+
+<p align="center">
+  <img src="images/ATM_System_Design.png" width="900" alt="ATM System Architecture Diagram">
+</p>
+
+### Design Overview
+
+- **Program Controller (`main`)** initializes the system and controls overall execution flow
+- **PIN Management & Authentication Gate** handles PIN setup, validation, and lockout after 3 failed attempts
+- **Menu Dispatcher** implements a loop with a switch-case for user-selected operations
+- **Transaction Engine** encapsulates balance checking, deposits, and withdrawals
+- **In-Memory State** stores PIN, balance, and failed-attempt counters (resets each run)
+- **UI Layer (CLI)** communicates with the user via `printf` / `scanf`
+- **System Layer** handles screen clearing and execution via OS calls
+
+This design keeps concerns separated while remaining simple and suitable for a single-process C console application.
+
+---
+
 ## 🖼️ Screenshots
 
 <p align="center">
