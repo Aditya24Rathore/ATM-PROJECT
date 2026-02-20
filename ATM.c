@@ -58,30 +58,35 @@ void withdraw_money() {
     }
 }
 
-//! Need to implement the pin validation function
-// int validate_pin() {
-//     // TODO: Implement PIN validation logic
-//     return 0;
-// }
-
-int main(){
-
-    int generatedPin,enteredPin;
-
-    generatedPin = generate_pin();
-    system("cls");
-    enteredPin = read_pin();
+int validate_pin(int generatedPin, int enteredPin) {
     
-    int pinAttempts = 0;
-    while(generatedPin != enteredPin) {
-        pinAttempts++;
+    #define MAX_ATTEMPT 3
+    int pinAttempt = 0;
+
+    while(generatedPin != enteredPin && pinAttempt < MAX_ATTEMPT) {
+        pinAttempt++;
         printf("\n\nInvalid PIN\n\n");
 
-        if(pinAttempts == 3) {
+        if(pinAttempt == MAX_ATTEMPT){
             printf("\nCard Blocked!\n");
             return 0;
         }
-        enteredPin = read_pin();
+    enteredPin = read_pin();
+    }
+    return 1;
+}
+
+int main(){
+
+    int generatedPin, enteredPin;
+
+    generatedPin = generate_pin();
+    system("cls");
+
+    enteredPin = read_pin();
+
+    if(!validate_pin(generatedPin, enteredPin)) {
+        return 0;
     }
 
     int choice;
