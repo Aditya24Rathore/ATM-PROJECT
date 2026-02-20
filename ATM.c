@@ -76,19 +76,7 @@ int validate_pin(int generatedPin, int enteredPin) {
     return 1;
 }
 
-int main(){
-
-    int generatedPin, enteredPin;
-
-    generatedPin = generate_pin();
-    system("cls");
-
-    enteredPin = read_pin();
-
-    if(!validate_pin(generatedPin, enteredPin)) {
-        return 0;
-    }
-
+void atm_menu() {
     int choice;
  
     do {
@@ -116,6 +104,22 @@ int main(){
                 default : printf("\n\n**Invalid Choice**\n\n");    
             }
     }while (choice != 0);
+}
+
+int main(){
+
+    int generatedPin, enteredPin;
+
+    generatedPin = generate_pin();
+    system("cls");
+
+    enteredPin = read_pin();
+
+    if(!validate_pin(generatedPin, enteredPin)) {
+        return 0;
+    }
+
+    atm_menu();
         
 return 0;
 }
