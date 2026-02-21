@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-double balance = 0;
 
 int read_pin(void) {
     int enteredPin;
@@ -20,19 +19,19 @@ int generate_pin(void) {
     return generatedPin;
 }
 
-void check_balance() {
+void check_balance(double *balance) {
 
-    printf("\nCURRENT BALANCE IS : %.2f Rs\n\n", balance);
+    printf("\nCURRENT BALANCE IS : %.2f Rs\n\n", *balance);
 }
 
-void deposit_money(){
+void deposit_money(double *balance){
 
     double depositAmount;
     printf("\nEnter Depositing balance : \n\n");
     scanf("%lf", &depositAmount);
 
     if(depositAmount > 0) {
-        balance += depositAmount;
+        *balance += depositAmount;
         printf("\n%.2f Rs DEPOSITED\n\n", depositAmount);
     }
     else if(depositAmount <= 0) {
@@ -40,7 +39,7 @@ void deposit_money(){
     }
 }
 
-void withdraw_money() {
+void withdraw_money(double *balance) {
 
     double withdrawAmount;
     printf("\nEnter withdrawing Amount : \n\n");
@@ -49,12 +48,12 @@ void withdraw_money() {
     if(withdrawAmount <= 0){
         printf("\n\nInvalid Input\n\n");
     }
-    else if(withdrawAmount > balance) {
+    else if(withdrawAmount > *balance) {
         printf("\nLow Balance... \n\n");
     }
-    else if(withdrawAmount <= balance) {
-        balance -= withdrawAmount;
-        printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", balance);
+    else if(withdrawAmount <= *balance) {
+        *balance -= withdrawAmount;
+        printf("\nAfter Withdraw Balance is : %.2f Rs\n\n", *balance);
     }
 }
 
@@ -76,7 +75,7 @@ int validate_pin(int generatedPin, int enteredPin) {
     return 1;
 }
 
-void atm_menu() {
+void atm_menu(double *balance) {
     int choice;
  
     do {
@@ -89,13 +88,13 @@ void atm_menu() {
         scanf("%d", &choice);
 
             switch(choice) {
-                case 1: check_balance();
+                case 1: check_balance(balance);
                     break;
 
-                case 2: deposit_money();
+                case 2: deposit_money(balance);
                     break;
 
-                case 3: withdraw_money();
+                case 3: withdraw_money(balance);
                     break;
 
                 case 0: printf("\nCANCELING TRANSACTION...\n\n");
@@ -109,6 +108,7 @@ void atm_menu() {
 int main(){
 
     int generatedPin, enteredPin;
+    double balance = 0;
 
     generatedPin = generate_pin();
     system("cls");
@@ -119,7 +119,7 @@ int main(){
         return 0;
     }
 
-    atm_menu();
+    atm_menu(&balance);
         
 return 0;
 }
